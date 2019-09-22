@@ -144,16 +144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 440866014991013096}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b470b3e4d90528a40aeec21679cfba93,
-        type: 3}
-      propertyPath: m_Name
-      value: GameJamBoomerang
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b470b3e4d90528a40aeec21679cfba93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b470b3e4d90528a40aeec21679cfba93,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,6 +213,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 32.91596
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b470b3e4d90528a40aeec21679cfba93,
+        type: 3}
+      propertyPath: m_Name
+      value: GameJamBoomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b470b3e4d90528a40aeec21679cfba93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b470b3e4d90528a40aeec21679cfba93, type: 3}
