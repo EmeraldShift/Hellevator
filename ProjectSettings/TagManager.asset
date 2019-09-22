@@ -22,6 +22,7 @@ TagManager:
   - Bullet
   - Laser
   - CircleLaser
+  - Enemy
   - Yoyo
   - UnyoyableBullet
   - 

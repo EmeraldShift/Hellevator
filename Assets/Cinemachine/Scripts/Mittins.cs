@@ -34,6 +34,10 @@ public class Mittins : MonoBehaviour
 	public float circleSpeed2;
 	private float circleTime2;
 
+	public float coolDown3;
+	public float speed3;
+	private float curTime3;
+
 	public Color laserColor;
 	public float distFromEyes;
 	public float distFromCenter;
@@ -60,8 +64,8 @@ public class Mittins : MonoBehaviour
     {
 		PRNG = new System.Random();
 		initPattern = true;
-		pattern = 1;
-		lastPattern = 3;
+		pattern = 3;
+		lastPattern = 1;
 		shots = new List<GameObject>();
 		lasers = new List<GameObject>();
 		laserPointers = new List<GameObject>();
@@ -171,7 +175,9 @@ public class Mittins : MonoBehaviour
 
 				endPatternRecognition(patternSecs2);
 			} else if (pattern == 3) {
+				resetLaserColor();
 
+				curTime3 = 0;
 
 				endPatternRecognition(patternSecs3);
 			}
@@ -233,7 +239,15 @@ public class Mittins : MonoBehaviour
 					curLaserWarningTime -= Time.deltaTime;
 					updateLaserColor(curLaserWarningTime, laserWarning1);
 				} else if (lastPattern == 3) {
-
+					if(curTime3 < 0)
+					{
+						foreach (Transform tf in fireBallVolley)
+						{
+							gm.SpawnBullet(tf.position, 270, 0, speed3, true, rudo.transform);
+						}
+						curTime3 = coolDown3;
+					}
+					curTime3 -= Time.deltaTime;
 				}
 			} else endPattern(0.25f);
 		}
