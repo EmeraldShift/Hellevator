@@ -220,6 +220,7 @@ public class Rudo : MonoBehaviour
 		}
 		if (go.CompareTag("Laser"))
 		{
+			Physics.IgnoreCollision(GetComponent<Collider>(), go.GetComponent<Collider>());
 			if (mittins.curLaserWarningTime > 0 || _isInvincible) return;
 
 			_hp -= 1;
