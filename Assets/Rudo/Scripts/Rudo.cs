@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Rudo : MonoBehaviour
@@ -103,11 +101,9 @@ public class Rudo : MonoBehaviour
 
 		Vector3 hitPoint = rayInfo.point;
 		
-		// Proccess weapon tick
-		if (_yoyo)
-			HandleYoyo(hitPoint);
-		else
-			HandleBoomerang(hitPoint);
+		// Proccess weapon ticks
+		HandleYoyo(hitPoint);
+		HandleBoomerang(hitPoint);
 		
 		// Switch weapons
 		if (Input.GetKeyDown(KeyCode.F))
@@ -116,7 +112,7 @@ public class Rudo : MonoBehaviour
 
 	private void HandleYoyo(Vector3 hitPoint)
 	{
-		if (Input.GetMouseButton(0))
+		if (_yoyo && Input.GetMouseButton(0))
 		{
 			Vector3 relDiff = hitPoint - transform.position;
 			
@@ -156,7 +152,7 @@ public class Rudo : MonoBehaviour
 
 	private void HandleBoomerang(Vector3 hitPoint)
 	{
-		if (!Input.GetMouseButton(0))
+		if (_yoyo || !Input.GetMouseButton(0))
 			return;
 		
 		Vector3 relDiff = hitPoint - transform.position;
