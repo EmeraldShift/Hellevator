@@ -400,6 +400,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mittins_Default
       objectReference: {fileID: 0}
+    - target: {fileID: 8252914972159109061, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3271541648823850121, guid: 2b2969b1053562e44a9364363c57b92d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
         type: 3}
       propertyPath: fireBallVolley.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
         type: 3}
@@ -495,6 +500,56 @@ PrefabInstance:
       propertyPath: fireBallVolley.Array.data[2]
       value: 
       objectReference: {fileID: 1684745022}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[3]
+      value: 
+      objectReference: {fileID: 1794235349}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[4]
+      value: 
+      objectReference: {fileID: 1802188274}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[5]
+      value: 
+      objectReference: {fileID: 776707714}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[7]
+      value: 
+      objectReference: {fileID: 1545169309}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[8]
+      value: 
+      objectReference: {fileID: 1443047846}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: fireBallVolley.Array.data[6]
+      value: 
+      objectReference: {fileID: 1454921240}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: patternSecs3
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: coolDown3
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: speed3
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+        type: 3}
+      propertyPath: patternSecs2
+      value: 10.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2097349726, guid: 2b2969b1053562e44a9364363c57b92d, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.8
@@ -509,6 +564,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b2969b1053562e44a9364363c57b92d, type: 3}
+--- !u!1 &776707713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776707714}
+  m_Layer: 0
+  m_Name: Mittins_Right_Eye (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &776707714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776707713}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: -0, w: -0.46174863}
+  m_LocalPosition: {x: -0.8, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 235, z: 0}
 --- !u!1 &1058354910
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +805,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1129126417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3271541648823850121, guid: 2b2969b1053562e44a9364363c57b92d,
+    type: 3}
+  m_PrefabInstance: {fileID: 593973637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278073650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1148,96 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1443047845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443047846}
+  m_Layer: 0
+  m_Name: Mittins_Left_Eye (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1443047846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443047845}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: 0, w: 0.46174863}
+  m_LocalPosition: {x: 0.8, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 125, z: 0}
+--- !u!1 &1454921239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454921240}
+  m_Layer: 0
+  m_Name: Mittins_Left_Eye (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454921240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454921239}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: 0, w: 0.46174863}
+  m_LocalPosition: {x: 0.4, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 125, z: 0}
+--- !u!1 &1545169308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545169309}
+  m_Layer: 0
+  m_Name: Mittins_Left_Eye (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1545169309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545169308}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: 0, w: 0.46174863}
+  m_LocalPosition: {x: 0.55, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 125, z: 0}
 --- !u!1 &1678433604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1439,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 593973637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1794235348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794235349}
+  m_Layer: 0
+  m_Name: Mittins_Right_Eye (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794235349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794235348}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: -0, w: -0.46174863}
+  m_LocalPosition: {x: -0.4, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 235, z: 0}
+--- !u!1 &1802188273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802188274}
+  m_Layer: 0
+  m_Name: Mittins_Right_Eye (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802188274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802188273}
+  m_LocalRotation: {x: 0, y: 0.8870109, z: -0, w: -0.46174863}
+  m_LocalPosition: {x: -0.55, y: -0.8, z: -0.39999998}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1129126417}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 235, z: 0}
 --- !u!1 &2016964880 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8366339493786477079, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,

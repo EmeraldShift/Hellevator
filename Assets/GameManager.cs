@@ -22,9 +22,20 @@ public class GameManager : MonoBehaviour
         SetBulletCollision(bullet.GetComponent<Collider>(), false);
         
         _bullets.Add(bullet.gameObject);
-    }
+	}
 
-    public void DestroyBullet(GameObject go)
+	public void SpawnBullet(Vector3 position, float angle, int numBounces, float speed, bool _isHoming, Transform _rudo)
+	{
+		Bullet bullet = Instantiate(bulletPrefab, position, Quaternion.identity);
+		bullet.Initialize(this, angle, numBounces, speed, _isHoming, _rudo);
+
+		// bullets can't collide with each other
+		SetBulletCollision(bullet.GetComponent<Collider>(), false);
+
+		_bullets.Add(bullet.gameObject);
+	}
+
+	public void DestroyBullet(GameObject go)
     {
         _bullets.Remove(go);
         Destroy(go);
