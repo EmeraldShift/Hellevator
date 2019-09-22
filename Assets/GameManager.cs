@@ -28,9 +28,21 @@ public class GameManager : MonoBehaviour
     {
         _bullets.Remove(go);
         Destroy(go);
-    }
+	}
 
-    public void SetBulletCollision(Collider c, bool collide)
+	public void DestroyAllBullets()
+	{
+		if(_bullets.Count > 0)
+		{
+			foreach (GameObject go in _bullets)
+			{
+				Destroy(go);
+			}
+			_bullets.Clear();
+		}
+	}
+
+	public void SetBulletCollision(Collider c, bool collide)
     {
         foreach(GameObject bullet in _bullets)
             Physics.IgnoreCollision(bullet.GetComponent<Collider>(), c, collide);

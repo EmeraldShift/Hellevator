@@ -5,13 +5,15 @@ using System;
 
 public class Mittins : MonoBehaviour
 {
-	public GameObject shot;
+	public GameManager gm;
+	
 	public GameObject laserPivot;
 	public GameObject laser;
 	public GameObject circleLaser;
 	public Transform leftEye;
 	public Transform center;
 	public Transform rightEye;
+	public Transform[] fireBallVolley;
 	public GameObject rudo;
 
 	public float patternSecs0;
@@ -23,7 +25,10 @@ public class Mittins : MonoBehaviour
 	private float laserRotationSpeed0;
 
 	public float laserTime1; //Time laser stays alive second pattern
+	public float bulletCount1;
+	public float bulletSpeed1;
 	private float curLaserTime1; //Time laser stays alive second pattern
+	private bool genBullets1;
 
 	public float timeBetweenCircle2; //Time between next circle spawn
 	public float circleSpeed2;
@@ -55,7 +60,7 @@ public class Mittins : MonoBehaviour
     {
 		PRNG = new System.Random();
 		initPattern = true;
-		pattern = 2;
+		pattern = 1;
 		lastPattern = 3;
 		shots = new List<GameObject>();
 		lasers = new List<GameObject>();
@@ -89,14 +94,6 @@ public class Mittins : MonoBehaviour
 		}
 	}
 
-	void removeShot() {
-		if (shots.Count <= 0) return;
-		foreach (GameObject toDel in shots) {
-			Destroy(toDel);
-		}
-		shots.Clear();
-	}
-
 	void endPatternRecognition(float timeLeft) {
 		lastPattern = pattern;
 		pattern = PRNG.Next(0, 3);
@@ -109,7 +106,7 @@ public class Mittins : MonoBehaviour
 		initPattern = true;
 
 		removeLasers();
-		removeShot();
+		gm.DestroyAllBullets();
 		removeCircles();
 	}
 
@@ -151,6 +148,7 @@ public class Mittins : MonoBehaviour
 			} else if (pattern == 1) {
 				resetLaserColor();
 
+				genBullets1 = false;
 				curLaserWarningTime = laserWarning2;
 				curLaserTime1 = 0;
 
@@ -191,23 +189,31 @@ public class Mittins : MonoBehaviour
 					updateLaserColor(curLaserWarningTime, laserWarning1);
 				} else if (lastPattern == 1) {
 					if(curLaserTime1 > 0) {
-						if (curLaserWarningTime <= 0) {
-
+						if (curLaserWarningTime <= 0 && !genBullets1) {
+							for(int i = 0; i < bulletCount1; i++)
+							{
+								Vector3 nextSpawnVector = laserPointers[0].transform.position + laserPointers[0].transform.forward * 0.075f * i;
+								float nextSpawnAngle = Vector3.Angle(laserPointers[0].transform.position, laserPointers[0].transform.forward);
+								gm.SpawnBullet(nextSpawnVector, nextSpawnAngle + 90f, 0, bulletSpeed1);
+								gm.SpawnBullet(nextSpawnVector, nextSpawnAngle - 90f, 0, bulletSpeed1);
+							}
+							genBullets1 = true;
 						}
 						curLaserWarningTime -= Time.deltaTime;
 						updateLaserColor(curLaserWarningTime, laserWarning2);
 					} else {
 						removeLasers();
-						removeShot();
 
 						laserPointers.Add(Instantiate(laserPivot, center.position, center.rotation));
 						lasers.Add(Instantiate(laser, laserPointers[0].transform));
 						lasers[0].transform.position += lasers[0].transform.forward * distFromCenter;
+						lasers[0].transform.localScale = new Vector3(0.01f, 0.01f, 1.125f);
 
 						laserPointers[0].transform.LookAt(rudo.transform);
 
 						curLaserTime1 = laserTime1;
 						curLaserWarningTime = laserWarning2;
+						genBullets1 = false;
 					}
 					curLaserTime1 -= Time.deltaTime;
 				} else if (lastPattern == 2) {
