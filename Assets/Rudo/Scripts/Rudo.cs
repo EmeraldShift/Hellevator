@@ -60,24 +60,35 @@ public class Rudo : MonoBehaviour
 		souls = 0;
 	}
 
-	void Update()
+	void FixedUpdate()
+	{
+		HandleWeapon();
+		HandleMovement();
+	}
+
+	private void HandleMovement()
 	{
 		Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		moveInput = moveInput.normalized;
 		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (_dashCooldown <= 0 && _moveVelocity.magnitude >= Mathf.Epsilon)
+			if (_dashCooldown <= 0 && _moveVelocity.sqrMagnitude >= Mathf.Epsilon)
 			{
 				_isDashing = true;
+				_moveVelocity *= 5;
 				_dashCooldown = 1;
 				StartCoroutine(nameof(DashEffect));
 			}
 		}
 
-		HandleWeapon();
+		if (_isDashing)
+			_moveVelocity *= 0.8f;
+		else
+			_moveVelocity = moveInput * speed;
 		
-		_moveVelocity = moveInput * speed;
+		_dashCooldown -= Time.deltaTime;
+		_rb.velocity = _moveVelocity;
 	}
 
 	private void HandleWeapon()
@@ -174,41 +185,26 @@ public class Rudo : MonoBehaviour
 	{
 		_isBoomerangOut = false;
 	}
-	
-	IEnumerator TurnOffInvisibility()
-	{
-		yield return new WaitForSeconds(iSeconds);
-		SetInvincible(false);
-	}
 
 	IEnumerator DashEffect()
 	{
+		SetInvincible(true);
 		Material mat = _renderer.material;
 		mat.color = Color.blue;
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.4f);
 		mat.color = Color.white;
+		_isDashing = false;
+		SetInvincible(false);
 	}
 
 	IEnumerator HitEffect()
 	{
+		SetInvincible(true);
 		Material mat = _renderer.material;
 		mat.color = Color.red;
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(iSeconds);
 		mat.color = Color.white;
-	}
-
-	void FixedUpdate()
-	{
-		if (_isDashing)
-		{
-			_moveVelocity *= 10;
-			SetInvincible(true);
-			_isDashing = false;
-			StartCoroutine(nameof(TurnOffInvisibility));
-		}
-
-		_dashCooldown -= Time.deltaTime;
-		_rb.velocity = _moveVelocity;
+		SetInvincible(false);
 	}
 
 	private void OnCollisionEnter(Collision other)
@@ -222,18 +218,14 @@ public class Rudo : MonoBehaviour
 			_hp -= 1;
 			gm.DestroyBullet(other.gameObject);
 			StartCoroutine(nameof(HitEffect));
-			Debug.Log("oof");
 			CheckDeath();
-			SetInvincible(true);
-			StartCoroutine(nameof(TurnOffInvisibility));
 		}
 	}
 
 	void SetInvincible(bool value)
 	{
 		_isInvincible = value;
-		if(value)
-			gm.OnBecomeInvincible();
+		gm.SetBulletCollision(GetComponent<Collider>(), value);
 	}
 
 	private void CheckDeath()

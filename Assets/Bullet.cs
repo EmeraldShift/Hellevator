@@ -47,7 +47,6 @@ public class Bullet : MonoBehaviour
         // Reflect among the normal vector so that it bounces off of the wall
         rb.velocity = Vector3.Reflect(rb.velocity, other.contacts[0].normal);
         numBounces--;
-        Debug.Log("shit");
     }
 
     private void LateUpdate()
