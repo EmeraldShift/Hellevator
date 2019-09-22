@@ -33,6 +33,7 @@ public class Mittins : MonoBehaviour
 	public float timeBetweenCircle2; //Time between next circle spawn
 	public float circleSpeed2;
 	private float circleTime2;
+	public float speed2;
 
 	public float coolDown3;
 	public float speed3;
@@ -224,18 +225,24 @@ public class Mittins : MonoBehaviour
 					curLaserTime1 -= Time.deltaTime;
 				} else if (lastPattern == 2) {
 					if(circleTime2 < 0) {
-						removeCircles();
+						//removeCircles();
 
-						circleLasers.Add(Instantiate(circleLaser, center.position, center.rotation));
-						circleLasers[0].transform.localScale = Vector3.zero;
-						circleLasers[0].tag = "Laser";
-						
-						circleTime2 = timeBetweenCircle2;
-					} else {
-						if (circleLasers.Count > 0) {
-							circleLasers[0].transform.localScale += (Vector3.one * circleSpeed2);
+						//circleLasers.Add(Instantiate(circleLaser, center.position, center.rotation));
+						//circleLasers[0].transform.localScale = Vector3.zero;
+						//circleLasers[0].tag = "Laser";
+
+						foreach (Transform tf in fireBallVolley)
+						{
+							gm.SpawnBullet(tf.position, 270, 0, speed2, true, rudo.transform);
 						}
+						circleTime2 = timeBetweenCircle2;
 					}
+					//else
+					//{
+					//	if (circleLasers.Count > 0) {
+					//		circleLasers[0].transform.localScale += (Vector3.one * circleSpeed2);
+					//	}
+					//}
 					circleTime2 -= Time.deltaTime;
 					curLaserWarningTime -= Time.deltaTime;
 					updateLaserColor(curLaserWarningTime, laserWarning1);
