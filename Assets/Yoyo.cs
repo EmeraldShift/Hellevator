@@ -20,10 +20,11 @@ public class Yoyo : MonoBehaviour
         if (_retract)
         {
             Vector3 diff = sender.position - transform.position;
-            GetComponent<Rigidbody>().velocity = diff * 3f;
-            GetComponent<Rigidbody>().velocity.Normalize();
+            GetComponent<Rigidbody>().velocity = diff.normalized * 1.5f;
         }
 
+        if ((sender.position - transform.position).magnitude < 0.08f)
+            Kill();
     }
 
     public void Retract(bool retract)
@@ -42,11 +43,5 @@ public class Yoyo : MonoBehaviour
         GameObject go = other.gameObject;
         if (go.CompareTag("Bullet"))
             gm.DestroyBullet(other.gameObject);
-    }
-
-    public void OnCollisionStay(Collision other)
-    {
-        if (time > 0.1f && other.collider.GetComponent<Rudo>())
-            Kill();
     }
 }

@@ -125,6 +125,7 @@ public class Rudo : MonoBehaviour
 				// Tell yoyo where to return
 				_yoyoGo.SendMessage("SetSender", transform);
 				_isYoyoOut = true;
+				Physics.IgnoreCollision(_yoyoGo.GetComponent<Collider>(), GetComponent<Collider>());
 			}
 
 			// Move in direction of mouse
