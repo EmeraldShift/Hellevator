@@ -26,7 +26,7 @@ public class Gary : MonoBehaviour
         {
             // Select new state
             while (_attack == _lastAttack)
-                _attack = kRandom.Next(0, 4);
+                _attack = kRandom.Next(0, 3);
             _lastAttack = _attack;
             _stateTime = _time + (
                              _attack == 0 ? volleyTime :
