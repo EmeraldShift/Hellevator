@@ -1311,5 +1311,15 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 1369189369}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: gamePlane
+      value: 
+      objectReference: {fileID: 1099972862}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a, type: 3}
