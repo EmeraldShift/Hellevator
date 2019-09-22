@@ -23,151 +23,162 @@ public class Rudo : MonoBehaviour
 	[HideInInspector] public int souls;
 
 	
-	private int hp; // current hp
-	private bool yoyo; // yoyo out or boomerang out
-	private GameObject yoyoGo;
-	private GameObject boomerangGo;
+	private int _hp; // current hp
+	private bool _yoyo; // yoyo out or boomerang out
+	private GameObject _yoyoGo;
+	private GameObject _boomerangGo;
 	private Renderer _renderer;
-	private Vector3 lastMoveInput;
-	private Vector3 moveVelocity;
-	private Vector3 yoyoMoveVelocity;
-	private float dashCooldown;
+	private Vector3 _lastMoveInput;
+	private Vector3 _moveVelocity;
+	private Vector3 _yoyoMoveVelocity;
+	private float _dashCooldown;
 	
-	private bool isDashing;
-	private bool isYoyoOut;
-	private bool isBoomerangOut;
-	private bool isInvincible;
-	private bool isDead;
-	private bool shouldDestroyYoyo;
-	private bool shouldDestroyBoomerang;
+	private bool _isDashing;
+	private bool _isYoyoOut;
+	private bool _isBoomerangOut;
+	private bool _isInvincible;
+	private bool _isDead;
+	private bool _shouldDestroyYoyo;
+	private bool _shouldDestroyBoomerang;
 
-	private Rigidbody rb;
-	private Rigidbody boomerangRb;
-	private Animator animator;
+	private Rigidbody _rb;
+	private Rigidbody _boomerangRb;
+	private Animator _animator;
 
 	void Start()
 	{
-		rb = GetComponent<Rigidbody>();
+		_rb = GetComponent<Rigidbody>();
 		_renderer = GetComponent<Renderer>();
-		animator = GetComponent<Animator>();
-		hp = maxHp;
-		yoyo = false;
-		isDashing = false;
-		isYoyoOut = false;
-		isBoomerangOut = false;
-		isInvincible = false;
-		isDead = false;
+		_animator = GetComponent<Animator>();
+		_hp = maxHp;
+		_yoyo = false;
+		_isDashing = false;
+		_isYoyoOut = false;
+		_isBoomerangOut = false;
+		_isInvincible = false;
+		_isDead = false;
 		souls = 0;
 	}
 
 	void Update()
 	{
-		float dx = Input.GetAxisRaw("Horizontal");
-		float dz = Input.GetAxisRaw("Vertical");
 		Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		moveInput = moveInput.normalized;
 		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (dashCooldown <= 0 && moveVelocity.magnitude >= Mathf.Epsilon)
+			if (_dashCooldown <= 0 && _moveVelocity.magnitude >= Mathf.Epsilon)
 			{
-				isDashing = true;
-				dashCooldown = 1;
+				_isDashing = true;
+				_dashCooldown = 1;
 				StartCoroutine(nameof(DashEffect));
 			}
 		}
 
-		if (Input.GetMouseButtonDown(0))
+		HandleWeapon();
+		
+		_moveVelocity = moveInput * speed;
+	}
+
+	private void HandleWeapon()
+	{
+		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+		RaycastHit rayInfo = new RaycastHit();
+		if (!gamePlane.GetComponent<Collider>().Raycast(ray, out rayInfo, 1000.0f))
 		{
-			// Should not destroy the yoyo while left click is being held
-			shouldDestroyYoyo = false;
-			
-			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit rayInfo = new RaycastHit();
-			if (!gamePlane.GetComponent<Collider>().Raycast(ray, out rayInfo, 1000.0f))
-			{
-				Debug.Log("Player left clicked, but couldn't locate the point on the game plane");
-				return;
-			}
+			Debug.Log("Player left clicked, but couldn't locate the point on the game plane");
+			return;
+		}
 
-			Vector3 hitPoint = rayInfo.point;
+		Vector3 hitPoint = rayInfo.point;
+		
+		// Proccess weapon tick
+		if (_yoyo)
+			HandleYoyo(hitPoint);
+		else
+			HandleBoomerang(hitPoint);
+		
+		// Switch weapons
+		if (Input.GetKeyDown(KeyCode.F))
+			_yoyo = !_yoyo;
+	}
+
+	private void HandleYoyo(Vector3 hitPoint)
+	{
+		if (Input.GetMouseButton(0))
+		{
 			Vector3 relDiff = hitPoint - transform.position;
+			
+			// Yoyo logic
+			if (!_isYoyoOut)
+			{
+				_yoyoGo = Instantiate(yoyoPrefab, relDiff.normalized * yoyoDestroyDistance + transform.position, Quaternion.identity);
+				_yoyoGo.GetComponent<Yoyo>().gm = gm;
+				
+				// Tell yoyo where to return
+				_yoyoGo.SendMessage("SetSender", transform);
+				_isYoyoOut = true;
+			}
 
-			if (yoyo)
-			{
-				// Yoyo logic
-				if (!isYoyoOut)
-				{
-					yoyoGo = Instantiate(yoyoPrefab, transform.position, Quaternion.identity);
-				}
-				else
-				{
-					// Move in direction of mouse
-					if(relDiff.magnitude > yoyoRadius)
-						relDiff = yoyoRadius * relDiff.normalized;
-					else if (relDiff.magnitude <= yoyoDestroyDistance)
-						relDiff = 2 * yoyoDestroyDistance * relDiff.normalized; //can't be too close to destroy radius
-					
-					Vector3 targetPos = transform.position + relDiff;
-					Vector3 yoyoPos = yoyoGo.transform.position;
-					float adjustedSpeed = yoyoSpeed * relDiff.magnitude;
-					yoyoMoveVelocity = adjustedSpeed * (targetPos - yoyoPos);
-				}
-			}
-			else
-			{
-				// boomerang logic
-				if (!isBoomerangOut)
-				{
-					boomerangGo = Instantiate(boomerangPrefab, transform.position, Quaternion.identity);
-					boomerangRb = boomerangGo.GetComponent<Rigidbody>();
-					boomerangRb.velocity = relDiff.normalized * boomerangSpeed;
-				}
-				else
-				{
-					boomerangRb.velocity += boomerangSpeed * (transform.position - boomerangGo.transform.position);
-				}
-			}
+			// Move in direction of mouse
+			_yoyoGo.SendMessage("Retract", false);
+			Vector3 mousePoint = hitPoint;
+			if (relDiff.sqrMagnitude > yoyoRadius * yoyoRadius)
+				mousePoint = transform.position + relDiff.normalized * yoyoRadius;
+			Vector3 mouseDiff = mousePoint - _yoyoGo.transform.position;
+			_yoyoGo.GetComponent<Rigidbody>().velocity = mouseDiff * yoyoSpeed;
 		}
 		else
 		{
 			// Mouse is not being pressed down, so retract yoyo
-			if (isYoyoOut)
+			if (_isYoyoOut)
 			{
 				// Retract Yoyo
-				Vector3 yoyoDisplacement = yoyoGo.transform.position - transform.position;
+				_yoyoGo.SendMessage("Retract", true);
+				Vector3 yoyoDisplacement = _yoyoGo.transform.position - transform.position;
 				float yoyoMoveSpeed = yoyoSpeed * yoyoDisplacement.magnitude;
-				yoyoMoveVelocity = -yoyoMoveSpeed * yoyoDisplacement;
+				_yoyoMoveVelocity = -yoyoMoveSpeed * yoyoDisplacement;
 			}
-			shouldDestroyYoyo = true;
+			_shouldDestroyYoyo = true;
 		}
-
-		// Switch weapons
-		if (Input.GetKeyDown(KeyCode.F))
-			yoyo = !yoyo;
-		
-		moveVelocity = moveInput * speed;
 	}
 
-	private void LateUpdate()
+	private void HandleBoomerang(Vector3 hitPoint)
 	{
-		if (isYoyoOut && shouldDestroyYoyo && (yoyoGo.transform.position - transform.position).magnitude <= yoyoDestroyDistance)
-		{
-			Destroy(yoyoGo); //todo don't destroy?
-			isYoyoOut = false;
-		}
+		if (!Input.GetMouseButton(0))
+			return;
+		
+		Vector3 relDiff = hitPoint - transform.position;
+		
+		// Boomerang logic
+		if (_isBoomerangOut)
+			return;
+		_isBoomerangOut = true; // set to false when destroyed
 
-		if (isBoomerangOut && shouldDestroyBoomerang && (boomerangGo.transform.position - transform.position).magnitude <= boomerangDestroyDistance)
-		{
-			Destroy(boomerangGo);
-			isBoomerangOut = false;
-		}
+		var position = transform.position;
+		_boomerangGo = Instantiate(boomerangPrefab, position, Quaternion.identity);
+		_boomerangRb = _boomerangGo.GetComponent<Rigidbody>();
+		_boomerangRb.velocity = relDiff.normalized * boomerangSpeed;
+		Physics.IgnoreCollision(_boomerangGo.GetComponent<Collider>(), GetComponent<Collider>());
+
+		// Tell boomerang where to go, and where to return
+		_boomerangGo.SendMessage("SetSender", transform);
 	}
 
+	public void YoyoDone()
+	{
+		_isYoyoOut = false;
+	}
+
+	public void BoomerangDone()
+	{
+		_isBoomerangOut = false;
+	}
+	
 	IEnumerator TurnOffInvisibility()
 	{
 		yield return new WaitForSeconds(iSeconds);
-		setInvincible(false);
+		SetInvincible(false);
 	}
 
 	IEnumerator DashEffect()
@@ -188,16 +199,16 @@ public class Rudo : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (isDashing)
+		if (_isDashing)
 		{
-			moveVelocity *= 10;
-			setInvincible(true);
-			isDashing = false;
+			_moveVelocity *= 10;
+			SetInvincible(true);
+			_isDashing = false;
 			StartCoroutine(nameof(TurnOffInvisibility));
 		}
 
-		dashCooldown -= Time.deltaTime;
-		rb.velocity = moveVelocity;
+		_dashCooldown -= Time.deltaTime;
+		_rb.velocity = _moveVelocity;
 	}
 
 	private void OnCollisionEnter(Collision other)
@@ -205,29 +216,29 @@ public class Rudo : MonoBehaviour
 		GameObject go = other.gameObject;
 		if (go.CompareTag("Bullet"))
 		{
-			if (isInvincible)
+			if (_isInvincible)
 				return;
 			
-			hp -= 1;
+			_hp -= 1;
 			gm.DestroyBullet(other.gameObject);
 			StartCoroutine(nameof(HitEffect));
 			Debug.Log("oof");
-			checkDeath();
-			setInvincible(true);
+			CheckDeath();
+			SetInvincible(true);
 			StartCoroutine(nameof(TurnOffInvisibility));
 		}
 	}
 
-	void setInvincible(bool value)
+	void SetInvincible(bool value)
 	{
-		isInvincible = value;
+		_isInvincible = value;
 		if(value)
 			gm.OnBecomeInvincible();
 	}
 
-	private void checkDeath()
+	private void CheckDeath()
 	{
-		if (hp <= 0)
+		if (_hp <= 0)
 		{
 			//todo death
 		}

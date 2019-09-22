@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,12 +15,6 @@ public class GameManager : MonoBehaviour
     {
         _bullets = new List<GameObject>();
         _rudoCollider = rudo.GetComponent<Collider>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SpawnBullet(Vector3 position, float angle, int numBounces, float speed)
@@ -42,7 +35,7 @@ public class GameManager : MonoBehaviour
         Destroy(go);
     }
 
-    IEnumerator ResetInvicibility()
+    IEnumerator ResetInvincibility()
     {
         yield return new WaitForSeconds(rudo.iSeconds);
         
@@ -58,6 +51,6 @@ public class GameManager : MonoBehaviour
             // disable collisions
             Physics.IgnoreCollision(bullet.GetComponent<Collider>(), _rudoCollider);
         }
-        StartCoroutine(nameof(ResetInvicibility));
+        StartCoroutine(nameof(ResetInvincibility));
     }
 }

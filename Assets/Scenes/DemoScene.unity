@@ -834,13 +834,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369189368}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.000041797022, y: -0.00016875209, z: 0.00029833656, w: 0.99999994}
   m_LocalPosition: {x: 0.9740271, y: -9.83621, z: 14.577868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.0050000004, y: -0.019000001, z: 0.034}
 --- !u!1 &1381538822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1144,83 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rudo
       objectReference: {fileID: 0}
+    - target: {fileID: 8366339493786477079, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: boomerangPrefab
+      value: 
+      objectReference: {fileID: 3359389648629530748, guid: e52c25ef0102d7742ac09c83b9e10ff6,
+        type: 3}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: yoyoPrefab
+      value: 
+      objectReference: {fileID: 1115250201421680031, guid: 828c0e3ce7f27a047ab673eb07b5dee8,
+        type: 3}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: yoyoRadius
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1097839815}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: maxHp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: iFrames
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: iSeconds
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: yoyoSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: yoyoDestroyDistance
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: boomerangSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: boomerangDestroyDistance
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1369189369}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: gamePlane
+      value: 
+      objectReference: {fileID: 1099972862}
     - target: {fileID: 8857454141846233028, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1249,77 +1326,5 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: boomerangPrefab
-      value: 
-      objectReference: {fileID: 3359389648629530748, guid: e52c25ef0102d7742ac09c83b9e10ff6,
-        type: 3}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: yoyoPrefab
-      value: 
-      objectReference: {fileID: 1115250201421680031, guid: 828c0e3ce7f27a047ab673eb07b5dee8,
-        type: 3}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: yoyoRadius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1097839815}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: maxHp
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: iFrames
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: iSeconds
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: yoyoSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: yoyoDestroyDistance
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: boomerangSpeed
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: boomerangDestroyDistance
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: gm
-      value: 
-      objectReference: {fileID: 1369189369}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
-        type: 3}
-      propertyPath: gamePlane
-      value: 
-      objectReference: {fileID: 1099972862}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a, type: 3}
