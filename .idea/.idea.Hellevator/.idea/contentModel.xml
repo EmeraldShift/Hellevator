@@ -4,7 +4,6 @@
     <e p="C:\Users\Michael\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Michael\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Hellevator.-43500920.00" t="ExcludeRecursive" />
     <e p="C:\Users\Michael\Hellevator" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -121,6 +120,16 @@
               </e>
             </e>
           </e>
+          <e p="Plugins" t="Include">
+            <e p="GitHub" t="Include">
+              <e p="Editor" t="Include">
+                <e p="credits.txt" t="Include" />
+                <e p="eula.txt" t="Include" />
+                <e p="ExtensionLoader.cs" t="Include" />
+                <e p="UnityAPIWrapper.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="PostFX" t="Include">
             <e p="CinemachinePostFX.cs" t="Include" />
             <e p="CinemachinePostProcessing.cs" t="Include" />
@@ -130,6 +139,12 @@
             </e>
           </e>
           <e p="ReleaseNotes.txt" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="Gary.cs" t="Include" />
+            <e p="Laser.cs" t="Include" />
+            <e p="Mittins.cs" t="Include" />
+            <e p="Shot.cs" t="Include" />
+          </e>
           <e p="Timeline" t="Include">
             <e p="CinemachineMixer.cs" t="Include" />
             <e p="CinemachineShot.cs" t="Include" />
@@ -141,21 +156,12 @@
         </e>
         <e p="Enemy.cs" t="Include" />
         <e p="GameManager.cs" t="Include" />
-        <e p="Plugins" t="Include">
-          <e p="GitHub" t="Include">
-            <e p="Editor" t="Include">
-              <e p="credits.txt" t="Include" />
-              <e p="eula.txt" t="Include" />
-              <e p="ExtensionLoader.cs" t="Include" />
-              <e p="UnityAPIWrapper.cs" t="Include" />
-            </e>
-          </e>
-        </e>
         <e p="Rudo" t="Include">
           <e p="Scripts" t="Include">
             <e p="Rudo.cs" t="Include" />
           </e>
         </e>
+        <e p="TennisBall.cs" t="Include" />
         <e p="Yoyo.cs" t="Include" />
       </e>
       <e p="Hellevator.sln" t="IncludeFlat" />
