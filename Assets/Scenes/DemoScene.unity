@@ -805,6 +805,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1129126413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5906909972665607237, guid: 2b2969b1053562e44a9364363c57b92d,
+    type: 3}
+  m_PrefabInstance: {fileID: 593973637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048d4f2113907424299e19a7c6fff98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1129126417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3271541648823850121, guid: 2b2969b1053562e44a9364363c57b92d,
@@ -1594,6 +1606,11 @@ PrefabInstance:
       propertyPath: gamePlane
       value: 
       objectReference: {fileID: 1099972862}
+    - target: {fileID: 4757130814622775613, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
+        type: 3}
+      propertyPath: mittins
+      value: 
+      objectReference: {fileID: 1129126413}
     - target: {fileID: 8857454141846233028, guid: 62197ff06dcb3a84fbbdd8f3d3403b5a,
         type: 3}
       propertyPath: m_LocalPosition.x

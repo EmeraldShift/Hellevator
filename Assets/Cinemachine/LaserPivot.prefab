@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478975791653370727}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LaserPivot
   m_TagString: Laser
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7155796954521012239}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2824921403644435085}
   - component: {fileID: 2119430701183273611}
   - component: {fileID: 8352974897291906001}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Laser
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -121,9 +121,9 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788544300843632131}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 838dac03b13a85c4eb1c30a44c4ec2e5, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2240116618225409908}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4299947496042799466}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3322967977628718782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4676780682308207433}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

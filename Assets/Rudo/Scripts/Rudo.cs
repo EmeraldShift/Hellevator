@@ -18,6 +18,7 @@ public class Rudo : MonoBehaviour
 	public float boomerangDestroyDistance;
 	public GameObject yoyoPrefab;
 	public GameObject boomerangPrefab;
+	public Mittins mittins;
 	[HideInInspector] public int souls;
 
 	
@@ -213,6 +214,15 @@ public class Rudo : MonoBehaviour
 			
 			_hp -= 1;
 			gm.DestroyBullet(other.gameObject);
+			StartCoroutine(nameof(HitEffect));
+			CheckDeath();
+		}
+		if (go.CompareTag("Laser"))
+		{
+			Physics.IgnoreCollision(GetComponent<Collider>(), other.collider);
+			if (mittins.curLaserWarningTime > 0 || _isInvincible) return;
+
+			_hp -= 1;
 			StartCoroutine(nameof(HitEffect));
 			CheckDeath();
 		}

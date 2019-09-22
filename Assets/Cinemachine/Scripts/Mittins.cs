@@ -42,7 +42,7 @@ public class Mittins : MonoBehaviour
 	public float distFromEyes;
 	public float distFromCenter;
 
-	private float curLaserWarningTime;
+	public float curLaserWarningTime;
 	private float laserWarning1 = 0.5f;
 	private float laserWarning2 = 1f;
 
@@ -64,7 +64,7 @@ public class Mittins : MonoBehaviour
     {
 		PRNG = new System.Random();
 		initPattern = true;
-		pattern = 3;
+		pattern = 0;
 		lastPattern = 1;
 		shots = new List<GameObject>();
 		lasers = new List<GameObject>();
@@ -228,6 +228,7 @@ public class Mittins : MonoBehaviour
 
 						circleLasers.Add(Instantiate(circleLaser, center.position, center.rotation));
 						circleLasers[0].transform.localScale = Vector3.zero;
+						circleLasers[0].tag = "Laser";
 						
 						circleTime2 = timeBetweenCircle2;
 					} else {
