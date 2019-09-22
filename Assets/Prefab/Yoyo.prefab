@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1115250201421680016}
   - component: {fileID: -6740715886701616738}
   - component: {fileID: 2702185020671264225}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Yoyo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767ac8a20126579439bd2e2908f2404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
 --- !u!1 &2170243965016280098
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4965409232244387911}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,11 +162,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4965409232244387911}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: ca2a2025bac56024e832fbb51fa70bab,
-        type: 3}
-      propertyPath: m_Name
-      value: GameJamYoyo
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ca2a2025bac56024e832fbb51fa70bab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,6 +231,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.4915798
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Name
+      value: GameJamYoyo
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -2994569234417419163, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232488858435980449, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555709344509756922, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -5102530947620581811, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 330708324486205603, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -6581041025168474491, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292535884062368016, guid: ca2a2025bac56024e832fbb51fa70bab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca2a2025bac56024e832fbb51fa70bab, type: 3}

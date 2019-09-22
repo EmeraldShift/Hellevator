@@ -4,6 +4,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Bullet bulletPrefab;
+    public TennisBall tennisBallPrefab;
+    public TennisBall unyoyableTennisBallPrefab;
     
     private List<GameObject> _bullets;
 
@@ -35,7 +37,23 @@ public class GameManager : MonoBehaviour
 		_bullets.Add(bullet.gameObject);
 	}
 
-	public void DestroyBullet(GameObject go)
+    public GameObject SpawnTennisBall(Vector3 position, float angle, int numBounces, float speed, bool yoyoable=true, bool homing=false)
+    {
+	    TennisBall bullet;
+	    if (yoyoable)
+		    bullet = Instantiate(tennisBallPrefab, position, Quaternion.identity);
+	    else
+		    bullet = Instantiate(unyoyableTennisBallPrefab, position, Quaternion.identity);
+	    bullet.Initialize(this, angle, numBounces, speed, homing);
+        
+	    // bullets can't collide with each other
+	    SetBulletCollision(bullet.GetComponent<Collider>(), false);
+        
+	    _bullets.Add(bullet.gameObject);
+	    return bullet.gameObject;
+    }
+
+    public void DestroyBullet(GameObject go)
     {
         _bullets.Remove(go);
         Destroy(go);
